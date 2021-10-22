@@ -1,0 +1,22 @@
+{
+  "name": "agora",
+  "version": "1.0.0",
+  "description": "best thing since chuck norris",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": "amadou, awad, damien, remi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.11",
+    "morgan": "^1.10.0",
+    "sync-request": "^6.1.0",
+    "uid2": "^1.0.0",
+    "view": "^1.1.1"
+  }
+}
