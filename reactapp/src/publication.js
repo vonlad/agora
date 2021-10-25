@@ -11,27 +11,42 @@ function Publication() {
     const [status, setStatus] = useState(false);
     const [message, setMessage] = useState('');
     const [boutonVali, setBoutonVali] = useState('Valider le choix');
+    var date;
+
 
     useEffect(() => {
       setVote(selection);
       setMessage("");
     },[selection])
 
+    var sendVote = async() => {
+      await fetch('/sendVote', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `vote=${vote}&publication="Publication"&date=${date}&token="token"`
+    })
+    }
+
     var voteValidation = () => {
-      console.log(vote);
       if (!vote) {
         setMessage("Veuillez choisir une option de vote avant de valider.")
       } else if (!status && boutonVali != "Annuler le vote") {
         setStatus(true);
         setMessage("Votre vote a bien été pris en compte. Merci pour votre participation.")
         setBoutonVali("Annuler le vote")
+        date = Date.now;
+        sendVote();
       } 
       if (boutonVali == "Annuler le vote") {
         setStatus(false);
         setBoutonVali("Valider le choix");
         setMessage("");
     }
+
+    console.log(vote);
   }
+
+ 
    
     return (
       <div>
