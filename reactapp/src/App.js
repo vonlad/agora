@@ -4,13 +4,13 @@ import './App.css';
 
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-
+import token from './reducers/token'
 import Accueil from './Accueil';
 import Thematique from './Thematique';
 import Test from './Test';
 import Publication from './publication';
 
-const store = createStore(combineReducers({}))
+const store = createStore(combineReducers({token}))
 
 function App() {
   return (

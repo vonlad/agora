@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import './App.css';
 import {Input,Button} from 'antd';
 import {Link, Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-function Inscription() {
+function Inscription(props) {
 
   const [signUpUsername, setSignUpUsername] = useState('')
   const [signUpEmail, setSignUpEmail] = useState('')
@@ -23,9 +24,10 @@ function Inscription() {
     })
 
     const body = await data.json()
-
+console.log(body)
     if(body.result == true){
-      setUserExists(true)
+      setUserExists(true);
+      props.addToken(body.token)
     } else {
       setErrorsSignup(body.error)
     }
@@ -40,9 +42,10 @@ function Inscription() {
     })
 
     const body = await data.json()
-
+    console.log(body)
     if(body.result == true){
-      setUserExists(true)
+      setUserExists(true);
+      props.addToken(body.token)
     }  else {
       setErrorsSignin(body.error)
     }
@@ -66,8 +69,10 @@ function Inscription() {
     <div className="Login-page" >
 
           {/* SIGN-IN */}
+<div>
 
           <div className="Sign">
+          <h3 style={{color:"white"}}> Je suis déjà inscrit </h3>
                   
             <Input onChange={(e) => setSignInEmail(e.target.value)} className="Login-input" placeholder="email" />
 
@@ -78,10 +83,16 @@ function Inscription() {
             <Button onClick={() => handleSubmitSignin()}  style={{width:'80px'}} type="primary">Sign-in</Button>
 
           </div>
-
+</div>
           {/* SIGN-UP */}
+          <div>
+
+        
+          
 
           <div className="Sign">
+
+          <h3 style={{color:"white"}}>Je n'ai pas encore de compte </h3>
                   
             <Input onChange={(e) => setSignUpUsername(e.target.value)} className="Login-input" placeholder="username" />
 
@@ -94,9 +105,20 @@ function Inscription() {
             <Button onClick={() => handleSubmitSignup()} style={{width:'80px'}} type="primary">Sign-up</Button>
 
           </div>
-
+          </div>
       </div>
   );
 }
 
-export default Inscription;
+function mapDispatchToProps(dispatch){
+    return {
+      addToken: function(token){
+        dispatch({type: 'addToken', token: token})
+      }
+    }
+  }
+  
+  export default connect(
+    null,
+    mapDispatchToProps
+  )(Inscription)
