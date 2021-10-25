@@ -11,6 +11,8 @@ import {
   Row,
   Col,
   Tabs,
+  List,
+  Space,
 } from "antd";
 import "antd/dist/antd.css";
 import {
@@ -22,6 +24,9 @@ import {
   FacebookOutlined,
   LinkedinOutlined,
   UserOutlined,
+  MessageOutlined,
+  LikeOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -33,6 +38,26 @@ const gridStyle = {
   textAlign: "center",
 };
 
+//questions aléatoires
+const listData = [];
+for (let i = 0; i < 10; i++) {
+  listData.push({
+    href: "https://ant.design",
+    title: `THEME ${i + 1}`,
+    avatar: "https://joeschmoe.io/api/v1/random",
+    description: "sous-theme ou tag perso",
+    content:
+      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+  });
+}
+
+const IconText = ({ icon, text }) => (
+  <Space>
+    {React.createElement(icon)}
+    {text}
+  </Space>
+);
+
 // import {Redirect} from 'react-router-dom';
 // import {connect} from 'react-redux';
 
@@ -42,7 +67,7 @@ function Accueil(props) {
       <Row>
         <Col span={6}>
           {" "}
-          <Image width={200} src="./image/AGORA.png" />
+          <Image className="logo" width={200} src="./image/AGORA.png" />
         </Col>
         <Col span={6}></Col>
         <Col span={6}></Col>
@@ -52,10 +77,12 @@ function Accueil(props) {
             style={{ fontSize: "20px", color: "#214C74" }}
             key="twitter"
           />
+          <Divider type="vertical" />
           <FacebookOutlined
             style={{ fontSize: "20px", color: "#214C74" }}
             key="facebook"
           />
+          <Divider type="vertical" />
           <LinkedinOutlined
             style={{ fontSize: "20px", color: "#214C74" }}
             key="linkedin"
@@ -80,6 +107,7 @@ function Accueil(props) {
           >
             Log in
           </Button>
+          <Divider type="vertical" />
           <Button
             type="primary"
             size={100}
@@ -91,16 +119,17 @@ function Accueil(props) {
       </Row>
 
       <Layout className="site-layout-background">
-        <Content style={{ padding: "0 24px", minHeight: 280 }}>
+        <Content
+          style={{ padding: "0 24px", minHeight: 280, marginTop: "30px" }}
+        >
           <div>
-            main content
             <Row justify="center">
               <div className="card-container">
                 <Tabs type="card">
                   <TabPane tab="A la une " key="1">
                     <p>-</p>
                     <Card
-                      style={{ width: 500 }}
+                      style={{ width: 700 }}
                       cover={
                         <img
                           alt="example"
@@ -182,6 +211,7 @@ function Accueil(props) {
                   style={{
                     backgroundColor: "#214C74",
                     marginTop: "50px",
+                    marginBottom: "50px",
                     color: "white",
                     width: "100%",
                     textAlign: "center",
@@ -195,6 +225,59 @@ function Accueil(props) {
               <Col span="2"></Col>
             </Row>
           </div>
+          <List
+            itemLayout="vertical"
+            size="large"
+            pagination={{
+              onChange: (page) => {
+                console.log(page);
+              },
+              pageSize: 3,
+            }}
+            dataSource={listData}
+            footer={
+              <div>
+                <b>ant design</b> footer part
+              </div>
+            }
+            renderItem={(item) => (
+              <List.Item
+                key={item.title}
+                actions={[
+                  <IconText
+                    icon={StarOutlined}
+                    text="156"
+                    key="list-vertical-star-o"
+                  />,
+                  <IconText
+                    icon={LikeOutlined}
+                    text="156"
+                    key="list-vertical-like-o"
+                  />,
+                  <IconText
+                    icon={MessageOutlined}
+                    text="2"
+                    key="list-vertical-message"
+                  />,
+                ]}
+                extra={
+                  <img
+                    width={272}
+                    alt="logo"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                  />
+                }
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src={item.avatar} />}
+                  title={<a href={item.href}>{item.title}</a>}
+                  description={item.description}
+                />
+                {item.content}
+              </List.Item>
+            )}
+          />
+          ,
           <Card
             title="Nos thématiques"
             style={{
@@ -215,9 +298,9 @@ function Accueil(props) {
           </Card>
           ,
         </Content>
-        <Sider className="sidebar-layout-background" width={200}>
+        <Sider className="sidebar-layout-background" width={200} height={300}>
           <Divider orientation="left" plain>
-            Thèmes
+            THÈMES
           </Divider>
           <p>
             Politique / Education / Sport / Projet et environnement / Evenement
