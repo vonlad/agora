@@ -11,7 +11,8 @@ import {
   Avatar,
   Divider,
   Row,
-  AutoComplete
+  AutoComplete,
+  Space
 } from "antd";
 import "antd/dist/antd.css";
 import {
