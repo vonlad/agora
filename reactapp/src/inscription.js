@@ -69,8 +69,10 @@ console.log(body)
     <div className="Login-page" >
 
           {/* SIGN-IN */}
+<div>
 
           <div className="Sign">
+          <h3 style={{color:"white"}}> Je suis déjà inscrit </h3>
                   
             <Input onChange={(e) => setSignInEmail(e.target.value)} className="Login-input" placeholder="email" />
 
@@ -81,10 +83,16 @@ console.log(body)
             <Button onClick={() => handleSubmitSignin()}  style={{width:'80px'}} type="primary">Sign-in</Button>
 
           </div>
-
+</div>
           {/* SIGN-UP */}
+          <div>
+
+        
+          
 
           <div className="Sign">
+
+          <h3 style={{color:"white"}}>Je n'ai pas encore de compte </h3>
                   
             <Input onChange={(e) => setSignUpUsername(e.target.value)} className="Login-input" placeholder="username" />
 
@@ -97,7 +105,7 @@ console.log(body)
             <Button onClick={() => handleSubmitSignup()} style={{width:'80px'}} type="primary">Sign-up</Button>
 
           </div>
-
+          </div>
       </div>
   );
 }
