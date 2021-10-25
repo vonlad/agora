@@ -78,7 +78,7 @@ console.log(body)
             
             {tabErrorsSignin}
 
-            <Button onClick={() => handleSubmitSignin()}  style={{width:'80px'}} type="primary">Sign-in</Button>
+            <Button onClick={() => handleSubmitSignin()}   type="primary" style={{width:'80px'}}>Sign-in</Button>
 
           </div>
 
@@ -94,7 +94,7 @@ console.log(body)
       
             {tabErrorsSignup}
 
-            <Button onClick={() => handleSubmitSignup()} style={{width:'80px'}} type="primary">Sign-up</Button>
+            <Button onClick={() => handleSubmitSignup()} style={{width:'80px'}} type="primary" style={{width:'80px'}}>Sign-up</Button>
 
           </div>
 
