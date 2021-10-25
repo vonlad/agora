@@ -72,7 +72,7 @@ router.post('/sign-in', async function(req,res,next){
       email: req.body.emailFromFront,
    
     })
-    console.log(user)
+   
     
     if(user){
         if(bcrypt.compareSync(req.body.passwordFromFront, user.password)){
@@ -124,10 +124,20 @@ module.exports = router;
 //     res.json({})
 //   })
 
-// pour ajouter un vote sur un publication [SI]
-// router.post('/addvote', async function(req, res, next){
-//     res.json({})
-//   })
+//pour ajouter un vote sur un publication [SI]
+router.post('/addvote', async function(req, res, next){
+    var result = false
+
+  var user = await userModel.findOne({token: req.body.token})
+
+  if(user){
+   
+      result = true
+      token = user.token
+    } else {
+      result = false}
+ res.json({user, token, result})
+  })
 
 // pour ajouter un commentaire sur un publication [SI]
 // router.post('/addcommentaire', async function(req, res, next){
