@@ -33,6 +33,7 @@ function Accueil(props) {
         <Menu.Item key="1">Accueil</Menu.Item>
         <Menu.Item key="2">Thématique</Menu.Item>
         <Menu.Item key="3">Profil</Menu.Item>
+       
         <Button
           type="primary"
           shape="round"

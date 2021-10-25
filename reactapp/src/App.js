@@ -6,7 +6,9 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
 import Accueil from './Accueil';
+import Inscription from './inscription';
 import Test from './Test';
+import Publication from './publication';
 
 const store = createStore(combineReducers({}))
 
@@ -17,6 +19,8 @@ function App() {
         <Switch>
           <Route component={Accueil} path="/" exact />
           <Route component={Test} path="/test" exact />
+          <Route component={Inscription} path="/inscription" exact />
+          <Route component={Publication} path="/publication" exact/>
         </Switch>
       </Router>
     </Provider>
