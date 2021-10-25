@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import './App.css';
 import {Input,Button} from 'antd';
 import {Link, Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-function Inscription() {
+function Inscription(props) {
 
   const [signUpUsername, setSignUpUsername] = useState('')
   const [signUpEmail, setSignUpEmail] = useState('')
@@ -23,9 +24,10 @@ function Inscription() {
     })
 
     const body = await data.json()
-
+console.log(body)
     if(body.result == true){
-      setUserExists(true)
+      setUserExists(true);
+      props.addToken(body.token)
     } else {
       setErrorsSignup(body.error)
     }
@@ -40,9 +42,10 @@ function Inscription() {
     })
 
     const body = await data.json()
-
+    console.log(body)
     if(body.result == true){
-      setUserExists(true)
+      setUserExists(true);
+      props.addToken(body.token)
     }  else {
       setErrorsSignin(body.error)
     }
@@ -99,4 +102,15 @@ function Inscription() {
   );
 }
 
-export default Inscription;
+function mapDispatchToProps(dispatch){
+    return {
+      addToken: function(token){
+        dispatch({type: 'addToken', token: token})
+      }
+    }
+  }
+  
+  export default connect(
+    null,
+    mapDispatchToProps
+  )(Inscription)

@@ -16,6 +16,7 @@ import {
   EllipsisOutlined,
   DownloadOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 
 const { Meta } = Card;
@@ -33,6 +34,7 @@ function Accueil(props) {
         <Menu.Item key="1">Accueil</Menu.Item>
         <Menu.Item key="2">Thématique</Menu.Item>
         <Menu.Item key="3">Profil</Menu.Item>
+        <Link to="inscription"><Menu.Item key="3">Inscription</Menu.Item> </Link>
        
         <Button
           type="primary"
