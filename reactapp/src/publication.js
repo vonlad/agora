@@ -6,14 +6,32 @@ import { Radio, Layout, Menu, Button, Image } from 'antd';
 function Publication() {
 
     const { Header, Footer, Sider, Content } = Layout;
-    const [selection, setSelection] = useState('');
     const [vote, setVote] = useState('');
+    const [selection, setSelection] = useState('')
+    const [status, setStatus] = useState(false);
+    const [message, setMessage] = useState('');
+    const [boutonVali, setBoutonVali] = useState('Valider le choix');
 
     useEffect(() => {
-      console.log(vote)
-    },[vote])
+      setVote(selection);
+      setMessage("");
+    },[selection])
 
-
+    var voteValidation = () => {
+      console.log(vote);
+      if (!vote) {
+        setMessage("Veuillez choisir une option de vote avant de valider.")
+      } else if (!status && boutonVali != "Annuler le vote") {
+        setStatus(true);
+        setMessage("Votre vote a bien été pris en compte. Merci pour votre participation.")
+        setBoutonVali("Annuler le vote")
+      } 
+      if (boutonVali == "Annuler le vote") {
+        setStatus(false);
+        setBoutonVali("Valider le choix");
+        setMessage("");
+    }
+  }
    
     return (
       <div>
@@ -30,11 +48,11 @@ function Publication() {
       </Menu>
 
       <Layout>
-        <Content >
+        <Content style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
 
           <img src="../alaska.jpg" style={{width: "30%"}}/>
 
-          <h1 style={{position:"absolute", backgroundColor: "#37A4B2", color:"white"}}>Que penseriez-vous d'annuler la dette publique ?</h1>
+          <h1 style={{backgroundColor: "#37A4B2", color:"white", position:"absolute", fontSize:"200%"}}>Que penseriez-vous d'annuler la dette publique ?</h1>
 
           <p>
 Par Marion Simon-Rainaud
@@ -49,12 +67,21 @@ Car, dans l'absolu, les chiffres inquiètent. La dette française* a littéralem
           
   
           <Radio.Group defaultValue="a" buttonStyle="solid" style={{ margin: 16, fontWeight: 'bold' }}>
-            <Radio.Button style={{ margin: 16, backgroundColor: "#FFC806"}} value="J'Adore" onClick={(e) => setVote(e.target.value) }>J'Adore</Radio.Button>
-            <Radio.Button style={{ margin: 16, backgroundColor: "#EDAC06"}} value="Je suis Pour" onClick={(e) => setVote(e.target.value)}>Je suis Pour</Radio.Button>
-            <Radio.Button style={{ margin: 16, backgroundColor: "#DAA419"}} value="Je suis Mitigé(e)" onClick={(e) => setVote(e.target.value)}>Je suis Mitigé(e)</Radio.Button>
-            <Radio.Button style={{ margin: 16, backgroundColor: "#BE833D"}} value="Je suis Contre" onClick={(e) => setVote(e.target.value)}>Je suis Contre</Radio.Button>
-            <Radio.Button style={{ margin: 16, backgroundColor: "#966215"}} value="Je Déteste" onClick={(e) => setVote(e.target.value)}>Je Déteste</Radio.Button>
+            <Radio.Button disabled={status} style={{ margin: 16, backgroundColor: "#FFC806"}} value="J'Adore" onClick={(e) => setSelection(e.target.value) }>J'Adore</Radio.Button>
+            <Radio.Button disabled={status} style={{ margin: 16, backgroundColor: "#EDAC06"}} value="Je suis Pour" onClick={(e) => setSelection(e.target.value)}>Je suis Pour</Radio.Button>
+            <Radio.Button disabled={status} style={{ margin: 16, backgroundColor: "#DAA419"}} value="Je suis Mitigé(e)" onClick={(e) => setSelection(e.target.value)}>Je suis Mitigé(e)</Radio.Button>
+            <Radio.Button disabled={status} style={{ margin: 16, backgroundColor: "#BE833D"}} value="Je suis Contre" onClick={(e) => setSelection(e.target.value)}>Je suis Contre</Radio.Button>
+            <Radio.Button disabled={status} style={{ margin: 16, backgroundColor: "#966215"}} value="Je Déteste" onClick={(e) => setSelection(e.target.value)}>Je Déteste</Radio.Button>
           </Radio.Group>
+
+          <Button
+          type="danger"
+          shape="round"
+          onClick={()=> voteValidation()}
+        > {boutonVali}
+        </Button>
+
+        {message}
   
           </Content>
           </Layout>
