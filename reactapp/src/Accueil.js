@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import {
   Button,
@@ -21,17 +20,10 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const { Meta } = Card;
 
-=======
-import React from 'react';
-import { Button } from 'antd';
-import './App.css';
-import { Link } from 'react-router-dom';
->>>>>>> signin
 // import {Redirect} from 'react-router-dom';
 // import {connect} from 'react-redux';
 
 function Accueil(props) {
-<<<<<<< HEAD
   return (
     <Layout>
       <Header className="header">header</Header>
@@ -94,15 +86,6 @@ function Accueil(props) {
       <Footer style={{ textAlign: "center" }}>footer</Footer>
     </Layout>
   );
-=======
-    return (
-        <div>
-            <div>Voici la page d'accueil!</div>
-            <Button type="primary" >Boutton</Button>
-            <Link to="inscription"> <Button type="primary" > Inscription </Button> </Link>
-        </div>
-    )
->>>>>>> signin
 }
 
 export default Accueil;
