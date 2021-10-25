@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Input, Button, Modal } from 'antd';
 import { Link, Redirect } from 'react-router-dom'
@@ -15,6 +15,17 @@ function Inscription(props) {
     const [listErrorsSignin, setErrorsSignin] = useState([])
     const [listErrorsSignup, setErrorsSignup] = useState([])
     const [isModalVisible, setIsModalVisible] = useState(false);
+   
+
+   var handleClick = async () => {
+       if (props.token == null){
+     showModal()
+       } else {
+        return <Redirect to='/' />
+       }}
+
+        
+
     var handleSubmitSignup = async () => {
 
         const data = await fetch('/sign-up', {
@@ -80,13 +91,10 @@ function Inscription(props) {
     return (
         <div className="Login-page" >
 
-          
             <div>
 
-
-
-
                 <Button onClick={() => showModal()} style={{ width: '80px' }} type="secondary" style={{ width: '80px' }}>Sign-up</Button>
+                <Button onClick={() => handleClick()}  style={{ width: '80px' }} type="secondary" style={{ width: '80px' }}>vote</Button>
             </div>
             <Modal title="Inscription/Connexion"
                 visible={isModalVisible}
@@ -126,6 +134,10 @@ function Inscription(props) {
     );
 }
 
+function mapStateToProps(state){
+    return {token:state.token}
+  }
+
 function mapDispatchToProps(dispatch) {
     return {
         addToken: function (token) {
@@ -134,7 +146,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+
+
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
+   
 )(Inscription)
