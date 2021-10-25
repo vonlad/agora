@@ -1,6 +1,6 @@
 @import '~antd/dist/antd.css';
 
-<<<<<<< HEAD
+
 .logo {
   padding-left: 50px;
 }
@@ -34,16 +34,9 @@
 
 /* forcer la couleur l'élèment du menu choisi */
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
-  color: #214C74;
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-@import '~antd/dist/antd.css';
-=======
->>>>>>> e6fb1883212ff4d8a8be5e91b53d295a26287975
-=======
+  color: #214C74}
 
->>>>>>> modaltoken
+
 
 h4 {
   color: white;
@@ -101,5 +94,5 @@ h4 {
   flex-wrap: wrap;
   justify-content: center;
 
->>>>>>> 598e591d1610c4d9d56e4c693f0bb5da5149df0d
+
 }
