@@ -3,6 +3,8 @@ import './App.css';
 import { Input, Button, Modal } from 'antd';
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { CookiesProvider } from "react-cookie";
+import Cookies from 'js-cookie';
 
 function Inscription(props) {
 
@@ -15,12 +17,15 @@ function Inscription(props) {
     const [listErrorsSignin, setErrorsSignin] = useState([])
     const [listErrorsSignup, setErrorsSignup] = useState([])
     const [isModalVisible, setIsModalVisible] = useState(false);
-   
+    Cookies.set('token', props.token)
+
 
    var handleClick = async () => {
        if (props.token == null){
      showModal()
        } else {
+        var mycookie = Cookies.get('token');
+        console.log(mycookie)
         return <Redirect to='/' />
        }}
 
@@ -88,7 +93,12 @@ function Inscription(props) {
         setIsModalVisible(false);
     };
 
+
+  
+
     return (
+        
+  
         <div className="Login-page" >
 
             <div>
@@ -131,6 +141,7 @@ function Inscription(props) {
                 </div>
             </Modal>
         </div>
+    
     );
 }
 

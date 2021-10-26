@@ -5,6 +5,8 @@ var uid2 = require('uid2');
 var bcrypt = require('bcrypt');
 var userModel = require('../models/users')
 var publicationModel = require('../models/publications')
+
+
 //gestion du sign-in
 
 
