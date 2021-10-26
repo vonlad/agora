@@ -26,6 +26,10 @@ router.post('/sign-up', async function(req,res,next){
     error.push('utilisateur déjà présent')
   }
 
+  if (req.body.passwordFromFront !== req.body.passwordVerifFromFront){
+    error.push('Les mots de passes ne correspondent pas')
+  }
+
   if(req.body.usernameFromFront == ''
   || req.body.emailFromFront == ''
   || req.body.passwordFromFront == ''

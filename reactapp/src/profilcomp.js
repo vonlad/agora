@@ -6,12 +6,11 @@ import { connect } from 'react-redux'
 import { CookiesProvider } from "react-cookie";
 import Cookies from 'js-cookie';
 
-function Inscription(props) {
+function Profilcomp(props) {
 
     const [signUpUsername, setSignUpUsername] = useState('')
     const [signUpEmail, setSignUpEmail] = useState('')
     const [signUpPassword, setSignUpPassword] = useState('')
-    const [signUpVerifPassword, setSignUpVerifPassword] = useState('')
     const [signInEmail, setSignInEmail] = useState('')
     const [signInPassword, setSignInPassword] = useState('')
     const [userExists, setUserExists] = useState(false)
@@ -37,7 +36,7 @@ function Inscription(props) {
         const data = await fetch('/sign-up', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}&passwordVerifFromFront=${signUpVerifPassword}`
+            body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`
         })
 
         const body = await data.json()
@@ -100,17 +99,9 @@ function Inscription(props) {
     return (
         
   
-        <div className="Login-page" >
+        <div className="info" >
 
-            <div>
-
-                <Button onClick={() => showModal()} style={{ width: '80px' }} type="secondary" style={{ width: '80px' }}>Sign-up</Button>
-                <Button onClick={() => handleClick()}  style={{ width: '80px' }} type="secondary" style={{ width: '80px' }}>vote</Button>
-            </div>
-            <Modal title="Inscription/Connexion"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}>
+           
                 <div className="Sign">
                     <h3 style={{ color: "white" }}> Je suis déjà inscrit </h3>
 
@@ -123,26 +114,8 @@ function Inscription(props) {
                     <Button onClick={() => handleSubmitSignin()} type="primary" style={{ width: '80px' }}>Sign-in</Button>
 
                 </div>
-                <div className="Sign">
-
-                    <h3 style={{ color: "white" }}>Je n'ai pas encore de compte </h3>
-
-                    <Input onChange={(e) => setSignUpUsername(e.target.value)} className="Login-input" placeholder="username" />
-
-                    <Input onChange={(e) => setSignUpEmail(e.target.value)} className="Login-input" placeholder="email" />
-
-                    <Input.Password onChange={(e) => setSignUpPassword(e.target.value)} className="Login-input" placeholder="password" />
-
-                    <Input.Password onChange={(e) => setSignUpVerifPassword(e.target.value)} className="Login-input" placeholder="verif password" />
-
-                    {tabErrorsSignup}
-
-                    <Button onClick={() => handleSubmitSignup()} style={{ width: '80px' }} type="primary" style={{ width: '80px' }}>Sign-up</Button>
-
-
-
-                </div>
-            </Modal>
+            
+       
         </div>
     
     );
@@ -166,4 +139,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
    
-)(Inscription)
+)(Profilcomp)
