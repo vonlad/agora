@@ -13,6 +13,9 @@ import {
   Tabs,
   List,
   Space,
+  Tag,
+  BackTop,
+  Badge,
 } from "antd";
 import "antd/dist/antd.css";
 import {
@@ -41,7 +44,7 @@ const gridStyle = {
 
 //questions aléatoires
 const listData = [];
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 3; i++) {
   listData.push({
     href: "https://ant.design",
     title: `THEME ${i + 1}`,
@@ -64,6 +67,7 @@ const IconText = ({ icon, text }) => (
 
 function Accueil(props) {
   return (
+    /* header */
     <Layout className="site-layout-background">
       <Row>
         <Col span={6}>
@@ -128,19 +132,22 @@ function Accueil(props) {
               <div className="card-container">
                 <Tabs type="card">
                   <TabPane tab="A la une " key="1">
-                    <p>-</p>
                     <Card
                       style={{ width: 700 }}
                       cover={
                         <img
-                          alt="example"
+                          alt="avatar"
                           src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                         />
                       }
                       actions={[
-                        <SettingOutlined key="setting" />,
+                        <Badge count={1000} overflowCount={999}>
+                          <Avatar icon={<UserOutlined />} />
+                        </Badge>,
                         <EditOutlined key="edit" />,
-                        <EllipsisOutlined key="ellipsis" />,
+                        <Button type="primary" danger>
+                          Réagir
+                        </Button>,
                       ]}
                     >
                       <Meta
@@ -148,7 +155,7 @@ function Accueil(props) {
                           <Avatar src="https://joeschmoe.io/api/v1/random" />
                         }
                         title="La question ?"
-                        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
                       />
                     </Card>
                   </TabPane>
@@ -163,9 +170,20 @@ function Accueil(props) {
                         />
                       }
                       actions={[
-                        <EllipsisOutlined key="ellipsis" />,
+                        <Badge count={1000} overflowCount={999}>
+                          <Avatar icon={<UserOutlined />} />
+                        </Badge>,
                         <EditOutlined key="edit" />,
-                        <SettingOutlined key="setting" />,
+
+                        <Button
+                          style={{
+                            backgroundColor: "#E2A916",
+                            borderColor: "#E2A916",
+                          }}
+                        >
+                          Réagir
+                        </Button>,
+                        ,
                       ]}
                     >
                       <Meta
@@ -278,11 +296,12 @@ function Accueil(props) {
               </List.Item>
             )}
           />
-          ,
+
           <Card
             title="Nos thématiques"
             style={{
               marginTop: "50px",
+              marginBottom: "50px",
               textAlign: "center",
             }}
           >
@@ -297,21 +316,73 @@ function Accueil(props) {
             <Card.Grid style={gridStyle}>Sport</Card.Grid>
             <Card.Grid style={gridStyle}>Tourisme</Card.Grid>
           </Card>
-          ,
         </Content>
+
         <Sider className="sidebar-layout-background" width={200} height={300}>
           <Divider orientation="left" plain>
             THÈMES
           </Divider>
           <p>
-            Politique / Education / Sport / Projet et environnement / Evenement
-            / Culture / Economie / Entreprise/ emploi /start up / Fait Divers /
-            autre Debats Santé / Transport / Tourisme / voyage / Locale / France
-            / T’as remarqué? / Idée
+            <Tag>
+              <a href="https://"> Politique</a>
+            </Tag>
+            <Tag>
+              <a href="https://"> Education</a>
+            </Tag>
+            <Tag>
+              <a href="https://"> Sport</a>
+            </Tag>
+            <Tag>
+              <a href="https://"> Projet et environnement </a>
+            </Tag>
+            <Tag>
+              <a href="https://"> Evenement</a>
+            </Tag>
+            <Tag>
+              <a href="https://"> Culture</a>
+            </Tag>
+            Economie / Entreprise/ emploi /start up / Fait Divers / autre Debats
+            Santé / Transport / Tourisme / voyage / Locale / France / T’as
+            remarqué? / Idée
           </p>
         </Sider>
       </Layout>
-      <Footer style={{ textAlign: "center" }}>footer</Footer>
+      <Footer style={{ textAlign: "left" }}>
+        {" "}
+        <Row>
+          <Col span={8}>
+            NOTRE GROUPE
+            <ul class="un">
+              <li>A propos</li>
+              <li>Notre vision</li>
+              <li>Contact</li>
+            </ul>
+          </Col>
+          <Col span={8}>
+            {" "}
+            ASSISTANCE
+            <ul class="un">
+              <li>Aide</li>
+              <li>Guide</li>
+              <li>Mentions legales</li>
+              <li>CGU</li>
+              <li>Cookies</li>
+            </ul>
+          </Col>
+          <Col span={8}>
+            {" "}
+            RESEAUX SOCIAUX
+            <ul class="un">
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>Twitter</li>
+            </ul>
+          </Col>
+        </Row>
+      </Footer>
+      <>
+        <BackTop />
+      </>
     </Layout>
   );
 }
