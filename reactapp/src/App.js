@@ -8,7 +8,7 @@ import token from './reducers/token'
 import Accueil from './Accueil';
 import Inscription from './inscription';
 import Thematique from './Thematique';
-import nouvelArticle from './nouvelArticle';
+import nouvelPublication from './nouvelPublication';
 import Test from './Test';
 import Publication from './publication';
 
@@ -24,7 +24,7 @@ function App() {
           <Route component={Inscription} path="/inscription" exact />
           <Route component={Publication} path="/publication" exact/>
           <Route component={Thematique} path="/Thematique" exact/>
-          <Route component={nouvelArticle} path="/nouvelArticle" exact/>
+          <Route component={nouvelPublication} path="/nouvelPublication" exact/>
         </Switch>
       </Router>
     </Provider>
