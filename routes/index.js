@@ -5,6 +5,8 @@ var uid2 = require('uid2');
 var bcrypt = require('bcrypt');
 var userModel = require('../models/users')
 var publicationModel = require('../models/publications')
+
+
 //gestion du sign-in
 
 
@@ -22,6 +24,10 @@ router.post('/sign-up', async function(req,res,next){
 
   if(data != null){
     error.push('utilisateur déjà présent')
+  }
+
+  if (req.body.passwordFromFront !== req.body.passwordVerifFromFront){
+    error.push('Les mots de passes ne correspondent pas')
   }
 
   if(req.body.usernameFromFront == ''

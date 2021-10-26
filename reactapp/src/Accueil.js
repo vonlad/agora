@@ -100,7 +100,7 @@ function Accueil(props) {
           <Menu mode="horizontal" defaultSelectedKeys={["2"]}>
             <Menu.Item key="1">Accueil</Menu.Item>
             <Menu.Item key="2">Thématique</Menu.Item>
-            <Menu.Item key="3">Profil</Menu.Item>
+            <Menu.Item  key="3">  Profil </Menu.Item>
           </Menu>
         </Col>
 
